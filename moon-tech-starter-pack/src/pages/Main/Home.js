@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import ProductCard from "../../components/ProductCard";
 
 const Home = () => {
   const [products, setProducts] = useState([]);
+  const {filter}= useSelector(state=>state)
+  console.log(filter)
 
   useEffect(() => {
     fetch("products.json")

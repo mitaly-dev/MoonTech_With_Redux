@@ -1,6 +1,9 @@
+import { type } from "@testing-library/user-event/dist/type";
 import {
+  ADD_NEW_PRODUCT,
   ADD_PRODUCT,
   ADD_TO_CART,
+  LOAD_PRODUCT_DATA,
   PRODUCT_LOADED,
   REMOVE_FROM_CART,
   REMOVE_PRODUCT,
@@ -56,5 +59,21 @@ export const toggle_brands=(data)=>{
 export const toggle_stock=()=>{
   return {
     type:TOGGLE_STOCK
+  }
+}
+
+// products 
+
+export const loadProducts=(data)=>{
+  return {
+    type:LOAD_PRODUCT_DATA,
+    payload: data
+  }
+}
+
+export const addNewProduct=(data)=>{
+  return {
+    type:ADD_NEW_PRODUCT,
+    payload:data
   }
 }

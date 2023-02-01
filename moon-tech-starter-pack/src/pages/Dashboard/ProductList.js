@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
+import { loadProductsData } from "../../redux/thunk/products/Products";
+import { useDispatch, useSelector } from "react-redux";
 
 const ProductList = () => {
-  const [products, setProducts] = useState([]);
+  const products = useSelector(state=>state.product.products)
 
+   console.log(products)
   useEffect(() => {
-    fetch("http://localhost:5000/products")
-      .then((res) => res.json())
-      .then((data) => setProducts(data.data));
+    loadProductsData()
   });
 
   return (

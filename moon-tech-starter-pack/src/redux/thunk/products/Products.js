@@ -1,3 +1,4 @@
+import { json } from "react-router-dom"
 import { addNewProduct, loadProducts } from "../../actions/productAction"
 
 export const loadProductsData=()=>{
@@ -14,7 +15,7 @@ export const addNewProductData=(product)=>{
     return async(dispatch,getState)=>{
         const res = await fetch('http://localhost:5000/product',{
             method:'POST',
-            body:JSON.stringify(product),
+            body:json.stringify(product),
             headers:{
                 'Content-type':'application/json'
             }
@@ -23,5 +24,15 @@ export const addNewProductData=(product)=>{
        if(data.acknowledged){
         dispatch(addNewProduct({...product,_id:data.insertedId}))
        }
+    }
+}
+
+export const removeProductItem=(id)=>{
+    return async (dispatch,getState)=>{
+        const res= await fetch('http://localhost:5000/product',{
+            method:'DELETE',
+        })
+        const data = res.json()
+        console.log(data)
     }
 }
